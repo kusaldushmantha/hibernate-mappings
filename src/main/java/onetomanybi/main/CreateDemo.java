@@ -38,16 +38,18 @@ public class CreateDemo
             session.save( instructorOne );
 
             // Creating courses and saving courses
-            int instId = 1;
+            int instId = 4;
             Instructor instructor = session.get( Instructor.class, instId );
 
-            Course courseOne = new Course( "Fitness World" );
-            Course courseTwo = new Course( "Healthy Lifestyle" );
+            Course courseOne = new Course( "Social Media Marketing Trends" );
+            Course courseTwo = new Course( "Promote Yourself : The Guide" );
             instructor.addCourse( courseOne );
             instructor.addCourse( courseTwo );
 
-            session.save( courseOne ); //TODO : Saving instructor instead of courses did not work. Why?
+            session.save( courseOne );
             session.save( courseTwo );
+            session.persist( instructor ); // If persist() is used, both courses and instructor will be saved
+
 
             // Get instructor and courses
             instructor = session.get( Instructor.class, instId );
